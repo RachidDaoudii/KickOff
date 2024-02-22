@@ -1,59 +1,153 @@
-import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
-
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+import { Tabs } from "expo-router";
+import React from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import COLORS from "@/constants/Colors";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
+export default function Page() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+    <Provider store={store}>
+      <React.StrictMode>
+        <Tabs
+          sceneContainerStyle={{ backgroundColor: COLORS.white }}
+          screenOptions={{
+            tabBarActiveTintColor: COLORS.white,
+            tabBarInactiveTintColor: COLORS.white,
+            tabBarStyle: {
+              borderTopColor: "transparent",
+              backgroundColor: COLORS.blueman,
+              height: 50,
+            },
+          }}
+        >
+          <Tabs.Screen
+            name="one"
+            options={{
+              headerTitle: "News",
+              tabBarLabel: "News",
+              tabBarLabelStyle: { fontSize: 12 },
+              tabBarIcon: () => (
+                <Ionicons
+                  name="newspaper"
+                  color={COLORS.white}
+                  style={{ fontWeight: "800" }}
+                  size={27}
+                />
+              ),
+              headerTitleAlign: "center",
+              headerStyle: {
+                height: 80,
+              },
+              headerTitleStyle: {
+                fontSize: 20,
+                fontWeight: "bold",
+                bottom: 20,
+              },
+              headerShown: false,
+              headerLeft: () => (
+                <Ionicons
+                  name="reorder-four"
+                  color={COLORS.white}
+                  style={{ marginLeft: 15 }}
+                  size={27}
+                  onPress={() => {
+                    // Handle left icon press event
+                  }}
+                />
+              ),
+              headerRight: () => (
+                <Ionicons
+                  name="heart"
+                  color={COLORS.white}
+                  style={{ marginRight: 15 }}
+                  size={27}
+                  onPress={() => {
+                    // Handle right icon press event
+                  }}
+                />
+              ),
+            }}
+          />
+          <Tabs.Screen
+            name="matches"
+            options={{
+              headerTitle: "Match",
+              tabBarLabel: "Match",
+              tabBarLabelStyle: { fontSize: 12 },
+              tabBarIcon: () => (
+                <Ionicons
+                  name="football"
+                  color={COLORS.white}
+                  style={{ fontWeight: "800" }}
+                  size={27}
+                />
+              ),
+              headerTitleAlign: "center",
+              headerStyle: {
+                height: 80,
+              },
+              headerTitleStyle: {
+                fontSize: 20,
+                fontWeight: "bold",
+                bottom: 20,
+              },
+              headerShown: false,
+            }}
+          />
+          <Tabs.Screen
+            name="two"
+            options={{
+              headerTitle: "Leagues",
+              tabBarLabel: "Leagues",
+              tabBarLabelStyle: { fontSize: 12 },
+              tabBarIcon: () => (
+                <Ionicons
+                  name="trophy"
+                  color={COLORS.white}
+                  style={{ fontWeight: "bold" }}
+                  size={27}
+                />
+              ),
+              headerTitleAlign: "center",
+              headerStyle: {
+                height: 80,
+              },
+              headerTitleStyle: {
+                fontSize: 20,
+                fontWeight: "bold",
+                bottom: 20,
+              },
+              headerShown: false,
+            }}
+          />
+          <Tabs.Screen
+            name="players"
+            options={{
+              headerTitle: "List players",
+              tabBarLabel: "List players",
+              tabBarLabelStyle: { fontSize: 12 },
+              tabBarIcon: () => (
+                <Ionicons
+                  name="trophy"
+                  color={COLORS.white}
+                  style={{ fontWeight: "bold" }}
+                  size={27}
+                />
+              ),
+              headerTitleAlign: "center",
+              headerStyle: {
+                height: 80,
+              },
+              headerTitleStyle: {
+                fontSize: 20,
+                fontWeight: "bold",
+                bottom: 20,
+              },
+              headerShown: false,
+            }}
+          />
+        </Tabs>
+      </React.StrictMode>
+    </Provider>
   );
 }
