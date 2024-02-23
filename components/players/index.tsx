@@ -1,23 +1,21 @@
 import COLORS from "@/constants/Colors";
-import { usePlayersQuery } from "@/redux/service/players/playerApi";
+
 import { useEffect, useState } from "react";
 import { View, Text, Image, Modal, TouchableOpacity } from "react-native";
 import PlayersItem from "./playerItem";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
+import ServicePlayer from "@/service/servicePlayer";
+import { useSelector } from "react-redux";
 export default function Players() {
-  const [players, setPlayer] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const { data, isSuccess, isLoading, refetch } = usePlayersQuery("");
-  useEffect(() => {
-    if (isSuccess) {
-      setPlayer(data.data);
-    }
-  }, [isSuccess]);
+  // const { players, setPlayer } = ServicePlayer();
+
+  const { players } = useSelector((state) => state.players);
 
   useEffect(() => {
-    refetch();
-  }, [isSuccess]);
+    console.log(players);
+  }, []);
+
   function model() {
     return (
       <Modal visible={modalVisible} animationType="slide" transparent={true}>
@@ -48,7 +46,7 @@ export default function Players() {
 
   return (
     <View>
-      {players.map((item) => (
+      {players.map((item: any) => (
         <TouchableOpacity
           onPress={() => {
             console.log("item", item);

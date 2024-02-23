@@ -1,12 +1,12 @@
 import Header from "@/components/header";
 import PlayersI from "@/components/players";
 import COLORS from "@/constants/Colors";
-import { useState } from "react";
+import ServicePlayer from "@/service/servicePlayer";
+import { useEffect, useState } from "react";
 import { Text, View, ImageBackground, Image, ScrollView } from "react-native";
-import { Searchbar } from "react-native-paper";
+import SearchPlayer from "@/components/players/searchPlayer";
 
 export default function Players() {
-  const [searchQuery, setSearchQuery] = useState("");
   return (
     <View>
       <View>
@@ -60,16 +60,7 @@ export default function Players() {
             >
               All players
             </Text>
-            <View style={{ width: "50%" }}>
-              <Searchbar
-                style={{
-                  width: "100%",
-                }}
-                placeholder="Search"
-                onChangeText={setSearchQuery}
-                value={searchQuery}
-              />
-            </View>
+            <SearchPlayer />
           </View>
         </View>
         <View>

@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authApi } from './service/Match/MatchApi';
-import authSlice from './features/auth/authSlice';
+import playerSlice from './features/player/playerSlice';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      auth: authSlice,
+      players: playerSlice,
       [authApi.reducerPath]: authApi.reducer,
     },
 

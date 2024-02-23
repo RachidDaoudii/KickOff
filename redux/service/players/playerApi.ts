@@ -7,7 +7,13 @@ export const authApi = ApiFootball.injectEndpoints({
         method: "GET",
       }),
     }),
+    search: builder.query({
+      query: (query) => ({
+        url: `players/search/${query}?include=nationality;position`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { usePlayersQuery } = authApi;
+export const { usePlayersQuery, useSearchQuery } = authApi;

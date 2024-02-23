@@ -3,7 +3,7 @@ import { View, Text, Image } from "react-native";
 
 export default function PlayersItem({ player }: any) {
   return (
-    <View key={player.id}>
+    <View>
       <View
         style={{
           display: "flex",
@@ -71,7 +71,7 @@ export default function PlayersItem({ player }: any) {
           </View>
           <View>
             <Text style={{ marginTop: 20, fontSize: 15, color: COLORS.white }}>
-              Dismiss
+              {player.date_of_birth}
             </Text>
           </View>
         </View>
