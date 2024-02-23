@@ -1,6 +1,7 @@
 import COLORS from "@/constants/Colors";
 import { View, Text } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { router } from "expo-router";
 
 const header = () => {
   return (
@@ -43,7 +44,7 @@ const header = () => {
           style={{ marginRight: 15 }}
           size={27}
           onPress={() => {
-            console.log("hello");
+            router.push("/(tabs)/favorite");
           }}
         />
       </View>

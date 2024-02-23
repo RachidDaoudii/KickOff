@@ -1,19 +1,15 @@
-import {
-  View,
-  FlatList,
-  Text,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Modal, TouchableOpacity } from "react-native";
 import MatchLiveItem from "./matchItem";
 import { useFixturesQuery } from "@/redux/service/Match/MatchApi";
 import { useEffect, useState } from "react";
+import COLORS from "@/constants/Colors";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 export default function Matchs() {
   const { isLoading, data, isSuccess, isFetching, refetch } =
     useFixturesQuery("");
   const [matchs, setMatchs] = useState([]);
-
+  const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
     if (isSuccess) {
       setMatchs(data.data);
@@ -23,6 +19,33 @@ export default function Matchs() {
   useEffect(() => {
     refetch();
   }, []);
+  function model() {
+    return (
+      <Modal visible={modalVisible} animationType="slide" transparent={true}>
+        <View
+          style={{
+            flex: 1,
+            top: "10%",
+            backgroundColor: COLORS.blueman,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            height: "50%",
+          }}
+        >
+          <View style={{ padding: 5, margin: 5 }}>
+            <TouchableOpacity onPress={() => setModalVisible(false)}>
+              <Ionicons
+                size={30}
+                color={COLORS.white}
+                name="arrow-back-outline"
+              ></Ionicons>
+            </TouchableOpacity>
+          </View>
+          <View></View>
+        </View>
+      </Modal>
+    );
+  }
 
   return (
     <View>
@@ -30,11 +53,13 @@ export default function Matchs() {
         <TouchableOpacity
           onPress={() => {
             console.log("item", league);
+            setModalVisible(true);
           }}
         >
           <MatchLiveItem match={league} />
         </TouchableOpacity>
       ))}
+      <View>{model()}</View>
     </View>
   );
 }

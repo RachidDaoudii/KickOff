@@ -146,6 +146,32 @@ export default function Page() {
               headerShown: false,
             }}
           />
+          {/* <Tabs.Screen
+            name="favorite"
+            options={{
+              headerTitle: "Favorite",
+              tabBarLabel: "Favorite",
+              tabBarLabelStyle: { fontSize: 12 },
+              tabBarIcon: () => (
+                <Ionicons
+                  name="trophy"
+                  color={COLORS.white}
+                  style={{ fontWeight: "bold" }}
+                  size={27}
+                />
+              ),
+              headerTitleAlign: "center",
+              headerStyle: {
+                height: 80,
+              },
+              headerTitleStyle: {
+                fontSize: 20,
+                fontWeight: "bold",
+                bottom: 20,
+              },
+              headerShown: true,
+            }}
+          /> */}
         </Tabs>
       </React.StrictMode>
     </Provider>

@@ -27,7 +27,7 @@ export default function PlayersItem({ player }: any) {
         >
           <View>
             <Text style={{ marginTop: 20, fontSize: 15, color: COLORS.white }}>
-              Today
+              {player?.position?.name}
             </Text>
           </View>
           <View
@@ -56,7 +56,7 @@ export default function PlayersItem({ player }: any) {
                 width: 20,
                 height: 10,
                 bottom: 10,
-                left:20
+                left: 20,
               }}
             />
             <Text

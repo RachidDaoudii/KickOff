@@ -3,7 +3,7 @@ export const authApi = ApiFootball.injectEndpoints({
   endpoints: (builder) => ({
     Players: builder.query({
       query: () => ({
-        url: `players?include=nationality`,
+        url: `players?include=nationality;position`,
         method: "GET",
       }),
     }),
