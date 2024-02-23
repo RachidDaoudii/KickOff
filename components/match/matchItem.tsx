@@ -2,8 +2,10 @@ import COLORS from "@/constants/Colors";
 import { Text, View, Image, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
-
+import { stateFavorites } from "@/redux/features/favorite/favoriteSlice";
+import { useDispatch } from "react-redux";
 export default function MatchItem({ match }: any) {
+  const dispatch = useDispatch();
   const [active, setActive] = useState(false);
   return (
     <View key={match.id}>
@@ -81,7 +83,7 @@ export default function MatchItem({ match }: any) {
                 size={23}
                 onPress={() => {
                   setActive(!active);
-                  console.log(match.id);
+                  dispatch(stateFavorites(match));
                 }}
               />
             ) : (
@@ -92,7 +94,7 @@ export default function MatchItem({ match }: any) {
                 size={23}
                 onPress={() => {
                   setActive(!active);
-                  console.log(match.id);
+                  dispatch(stateFavorites(match));
                 }}
               />
             )}

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import COLORS from "@/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+
 export default function Matchs() {
   const { isLoading, data, isSuccess, isFetching, refetch } =
     useFixturesQuery("");
@@ -52,7 +53,7 @@ export default function Matchs() {
       {matchs.map((league) => (
         <TouchableOpacity
           onPress={() => {
-            console.log("item", league);
+            console.log("ffff", league);
             setModalVisible(true);
           }}
         >

@@ -46,16 +46,36 @@ export default function Players() {
 
   return (
     <View>
-      {players.map((item: any) => (
-        <TouchableOpacity
-          onPress={() => {
-            console.log("item", item);
-            setModalVisible(true);
+      {players && players ? (
+        players.map((item: any) => (
+          <TouchableOpacity
+            onPress={() => {
+              console.log("item", item);
+              setModalVisible(true);
+            }}
+          >
+            <PlayersItem player={item} />
+          </TouchableOpacity>
+        ))
+      ) : (
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "95%",
+            height: 50,
+            backgroundColor: COLORS.blueman,
+            marginRight: 10,
+            marginLeft: 10,
+            borderRadius: 20,
+            marginTop: 30,
           }}
         >
-          <PlayersItem player={item} />
-        </TouchableOpacity>
-      ))}
+          <Text style={{ fontSize: 20, color: COLORS.white }}>Not Found</Text>
+        </View>
+      )}
       <View>{model()}</View>
     </View>
   );

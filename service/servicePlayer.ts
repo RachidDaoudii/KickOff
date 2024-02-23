@@ -8,9 +8,9 @@ import { TouchableOpacity, View } from "react-native";
 const ServicePlayer = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [players, setPlayer] = useState([]);
-  useEffect(() => {
-    console.log(players);
-  }, [players, setPlayer]);
+  // useEffect(() => {
+  //   console.log(players);
+  // }, [players, setPlayer]);
 
   return {
     searchQuery,

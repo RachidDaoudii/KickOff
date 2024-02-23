@@ -27,7 +27,7 @@ export default function PlayersItem({ player }: any) {
         >
           <View>
             <Text style={{ marginTop: 20, fontSize: 15, color: COLORS.white }}>
-              {player?.position?.name}
+              {player?.position?.name ? player?.position?.name: "Midfielder"}
             </Text>
           </View>
           <View

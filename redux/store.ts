@@ -1,12 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { authApi } from './service/Match/MatchApi';
-import playerSlice from './features/player/playerSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { authApi } from "./service/Match/MatchApi";
+import playerSlice from "./features/player/playerSlice";
+import favoriteSlice from "./features/favorite/favoriteSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       players: playerSlice,
       [authApi.reducerPath]: authApi.reducer,
+      favorites: favoriteSlice,
     },
 
     middleware: (getDefaultMiddleware) =>
