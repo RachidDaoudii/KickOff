@@ -1,19 +1,27 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [{}];
-
 const favoriteSlice = createSlice({
   name: "auth",
   initialState: {
-    favorits: [],
+    favorites: [
+      {
+        id: 0,
+        starting_at: "",
+        participants: [],
+        result_info: "",
+      },
+    ],
   },
   reducers: {
     stateFavorites: (state, action) => {
       console.log(action.payload);
-
-      //   state.favorits = [];
-      //   state.favorits.push();
+      state.favorites.push({
+        id: action.payload?.id,
+        starting_at: action.payload.starting_at,
+        participants: action.payload?.participants,
+        result_info: action.payload?.result_info,
+      });
     },
   },
 });

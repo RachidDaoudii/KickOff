@@ -4,11 +4,17 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
 import { stateFavorites } from "@/redux/features/favorite/favoriteSlice";
 import { useDispatch } from "react-redux";
-export default function MatchItem({ match }: any) {
+interface MatchItemProps {
+  match: any;
+  favorite: any;
+}
+export default function MatchItem({ match, favorite }: MatchItemProps) {
   const dispatch = useDispatch();
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(!favorite);
+  console.log("ffff", favorite);
+
   return (
-    <View key={match.id}>
+    <View key={match?.id}>
       <View
         style={{
           padding: 5,
@@ -19,7 +25,7 @@ export default function MatchItem({ match }: any) {
           overflow: "hidden",
           borderRadius: 10,
           borderWidth: 1,
-          borderColor: COLORS.white,
+          borderColor: favorite == true ? COLORS.white : COLORS.blue,
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
@@ -37,11 +43,17 @@ export default function MatchItem({ match }: any) {
             }}
           >
             <Image
-              source={{ uri: match.participants[0].image_path }}
+              source={{ uri: match?.participants[0]?.image_path }}
               style={{ width: 30, height: 30, borderRadius: 20 }}
             />
-            <Text style={{ color: COLORS.white, fontSize: 15, marginLeft: 20 }}>
-              {match.participants[0].name}
+            <Text
+              style={{
+                color: favorite == true ? COLORS.white : COLORS.dark,
+                fontSize: 15,
+                marginLeft: 20,
+              }}
+            >
+              {match?.participants[0]?.name}
             </Text>
           </View>
           <View
@@ -54,11 +66,17 @@ export default function MatchItem({ match }: any) {
             }}
           >
             <Image
-              source={{ uri: match.participants[1].image_path }}
+              source={{ uri: match?.participants[1]?.image_path }}
               style={{ width: 30, height: 30, borderRadius: 20 }}
             />
-            <Text style={{ color: COLORS.white, fontSize: 15, marginLeft: 20 }}>
-              {match.participants[1].name}
+            <Text
+              style={{
+                color: favorite == true ? COLORS.white : COLORS.dark,
+                fontSize: 15,
+                marginLeft: 20,
+              }}
+            >
+              {match?.participants[1]?.name}
             </Text>
           </View>
         </View>
@@ -66,7 +84,7 @@ export default function MatchItem({ match }: any) {
         <View
           style={{
             width: "1%",
-            borderColor: COLORS.white,
+            borderColor: favorite == true ? COLORS.white : COLORS.gray,
             borderEndWidth: 2,
             borderRadius: 10,
             height: "70%",
@@ -101,16 +119,22 @@ export default function MatchItem({ match }: any) {
           </View>
           <Text
             style={{
-              color: COLORS.white,
+              color: favorite == true ? COLORS.white : COLORS.dark,
               fontSize: 15,
               marginLeft: 10,
               textAlign: "center",
             }}
           >
-            {match.result_info}
+            {match?.result_info}
           </Text>
-          <Text style={{ color: COLORS.white, fontSize: 15, marginLeft: 10 }}>
-            {match.starting_at}
+          <Text
+            style={{
+              color: favorite == true ? COLORS.white : COLORS.dark,
+              fontSize: 15,
+              marginLeft: 10,
+            }}
+          >
+            {match?.starting_at}
           </Text>
         </View>
       </View>

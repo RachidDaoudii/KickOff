@@ -10,7 +10,7 @@ export default function Players() {
   const [modalVisible, setModalVisible] = useState(false);
   // const { players, setPlayer } = ServicePlayer();
 
-  const { players } = useSelector((state) => state.players);
+  const { players } = useSelector((state: any) => state.players);
 
   useEffect(() => {
     console.log(players);

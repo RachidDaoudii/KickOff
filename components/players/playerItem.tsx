@@ -39,7 +39,7 @@ export default function PlayersItem({ player }: any) {
           >
             <Image
               source={{
-                uri: player.image_path,
+                uri: player?.image_path,
               }}
               style={{
                 width: 60,
@@ -50,7 +50,7 @@ export default function PlayersItem({ player }: any) {
             />
             <Image
               source={{
-                uri: player.nationality.image_path,
+                uri: player?.nationality?.image_path,
               }}
               style={{
                 width: 20,

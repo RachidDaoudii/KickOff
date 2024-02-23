@@ -1,10 +1,9 @@
 import { View, Modal, TouchableOpacity } from "react-native";
-import MatchLiveItem from "./matchItem";
+import MatchItem from "./matchItem";
 import { useFixturesQuery } from "@/redux/service/Match/MatchApi";
 import { useEffect, useState } from "react";
 import COLORS from "@/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
 
 export default function Matchs() {
   const { isLoading, data, isSuccess, isFetching, refetch } =
@@ -57,7 +56,7 @@ export default function Matchs() {
             setModalVisible(true);
           }}
         >
-          <MatchLiveItem match={league} />
+          <MatchItem match={league} favorite={true} />
         </TouchableOpacity>
       ))}
       <View>{model()}</View>
