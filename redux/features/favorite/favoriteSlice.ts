@@ -15,7 +15,6 @@ const favoriteSlice = createSlice({
   },
   reducers: {
     stateFavorites: (state, action) => {
-      console.log(action.payload);
       state.favorites.push({
         id: action.payload?.id,
         starting_at: action.payload.starting_at,
@@ -23,9 +22,15 @@ const favoriteSlice = createSlice({
         result_info: action.payload?.result_info,
       });
     },
+    stateDeleteFavorite: (state, action) => {
+      let index = state.favorites.findIndex(
+        (item) => item.id === action.payload
+      );
+      state.favorites.splice(index, 1);
+    },
   },
 });
 
-export const { stateFavorites } = favoriteSlice.actions;
+export const { stateFavorites, stateDeleteFavorite } = favoriteSlice.actions;
 
 export default favoriteSlice.reducer;

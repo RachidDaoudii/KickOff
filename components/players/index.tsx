@@ -23,10 +23,10 @@ export default function Players() {
           style={{
             flex: 1,
             top: "10%",
-            backgroundColor: COLORS.blueman,
+            backgroundColor: COLORS.transparent,
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
-            height: "50%",
+            height: 100,
           }}
         >
           <View style={{ padding: 5, margin: 5 }}>
@@ -38,7 +38,7 @@ export default function Players() {
               ></Ionicons>
             </TouchableOpacity>
           </View>
-          <View></View>
+          <View style={{ height: 100 }}></View>
         </View>
       </Modal>
     );

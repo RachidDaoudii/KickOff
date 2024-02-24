@@ -2,7 +2,10 @@ import COLORS from "@/constants/Colors";
 import { Text, View, Image, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
-import { stateFavorites } from "@/redux/features/favorite/favoriteSlice";
+import {
+  stateFavorites,
+  stateDeleteFavorite,
+} from "@/redux/features/favorite/favoriteSlice";
 import { useDispatch } from "react-redux";
 interface MatchItemProps {
   match: any;
@@ -11,7 +14,7 @@ interface MatchItemProps {
 export default function MatchItem({ match, favorite }: MatchItemProps) {
   const dispatch = useDispatch();
   const [active, setActive] = useState(!favorite);
-  console.log("ffff", favorite);
+  const [isdelete, setDelete] = useState(false);
 
   return (
     <View key={match?.id}>
@@ -95,13 +98,16 @@ export default function MatchItem({ match, favorite }: MatchItemProps) {
           <View>
             {!active ? (
               <Ionicons
-                name="heart-outline"
+                name={favorite == true ? "heart-outline" : "heart"}
                 color={COLORS.white}
                 style={{ marginLeft: 130, color: COLORS.redop }}
                 size={23}
                 onPress={() => {
                   setActive(!active);
-                  dispatch(stateFavorites(match));
+                  favorite == true
+                    ? dispatch(stateFavorites(match))
+                    : dispatch(stateDeleteFavorite(match));
+                  console.log("add");
                 }}
               />
             ) : (
@@ -112,7 +118,8 @@ export default function MatchItem({ match, favorite }: MatchItemProps) {
                 size={23}
                 onPress={() => {
                   setActive(!active);
-                  dispatch(stateFavorites(match));
+                  dispatch(stateDeleteFavorite(match));
+                  console.log("delete");
                 }}
               />
             )}

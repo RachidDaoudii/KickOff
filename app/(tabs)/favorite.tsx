@@ -37,7 +37,6 @@ export default function Favorite() {
             return (
               <TouchableOpacity
                 onPress={() => {
-                  console.log("ffff", league);
                   setModalVisible(true);
                 }}
               >
