@@ -1,24 +1,24 @@
-#Kick-offKickOff
+# Kick-offKickOff
 KickOff is a mobile application developed with React Native Expo that allows users to view live football matches. Users can follow their favorite teams and players, get real-time updates on match scores, and check detailed player statistics. The application offers a complete experience for football enthusiasts to stay connected with the action of the latest matches.
 
-##Usage
+## Usage
 git clone https://github.com/your-username/kickoff.git cd kickoff npm install
 
 Run the App npm start
 
-##Testing
+## Testing
 Tests for this application are conducted using Jest and Jest-Expo. At least two components are subjected to testing. npm test
 
-##State Management
+## State Management
 Redux is used to manage the state of the application.
 
-##Dockerization
+## Dockerization
 To dockerize the application, run the following commands: docker build -t kickoff . docker run -p 3000:3000 kickoff
 
-##API Access
+## API Access
 Access the match API by creating an account and obtaining an access token: API Documentation: SportMonks API
 
-#Screens
+# Screens
 Screen 1: Matches
 Description: Displays a list of football matches. Features: Display all matches. Filter matches by "All Matches" or "Live Matches". Save a match with all information in the favorites screen. Components: Two filter buttons: "All Matches" and "Live Matches". List of matches. Navigation: By default, displays all matches. Selecting "Live Matches" displays only live matches.
 
