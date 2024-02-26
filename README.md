@@ -19,14 +19,14 @@ To dockerize the application, run the following commands: docker build -t kickof
 Access the match API by creating an account and obtaining an access token: API Documentation: SportMonks API
 
 # Screens
-Screen 1: Matches
+### Screen 1: Matches
 Description: Displays a list of football matches. Features: Display all matches. Filter matches by "All Matches" or "Live Matches". Save a match with all information in the favorites screen. Components: Two filter buttons: "All Matches" and "Live Matches". List of matches. Navigation: By default, displays all matches. Selecting "Live Matches" displays only live matches.
 
-Screen 2: Match Details
+### Screen 2: Match Details
 Description: Displays detailed information about a selected match (teams, date, time, leagues, season, etc.). Features: Option to return to the matches screen. Components: Match details. Button to return to the matches screen. Accessible from the matches screen by selecting a specific match.
 
-Screen 3: Players
+### Screen 3: Players
 Description: Displays a list of all players with their photo and full name. Features: Display all players with their photo and full name. Ability to search for a player by name. Components: Search field to search for a player by name. List of players with their photo and full name. Navigation: Clicking on a player from the list redirects the user to the player details screen.
 
-Screen 4: Player Details
+### Screen 4: Player Details
 Description: Displays detailed information about a selected player. Features: Display player details such as height, weight, date of birth, country, etc. Option to return to the players screen. Components: Player details (height, weight, date of birth, country, etc.). Button to return to the players screen. Navigation: Accessible from the players screen by selecting a specific player.
